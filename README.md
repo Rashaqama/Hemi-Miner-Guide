@@ -1,29 +1,26 @@
-# 🚀 Hemi-Miner Setup Guide
+🚀 Hemi-Miner Setup Guide
+Welcome to the Hemi-Miner setup guide! If you're new to mining, don't worry – follow these steps, and you'll be mining in no time. This guide combines all the essentials into a straightforward path to get you started quickly.
 
-Welcome to the **Hemi-Miner** setup guide! Whether you're new to mining or experienced, follow these steps to get started with Hemi-Miner quickly and smoothly.
+📋 Step 1: Preparing Your System
+First, let’s get all the necessary tools installed.
 
----
-
-## 📋 Step 1: Preparing Your System
-
-First, let’s get all the necessary tools installed:
-
-```bash
+bash
+Copy code
 sudo apt-get update && sudo apt-get install -y wget tar nano screen curl jq
 🧹 Step 2: Check for Previous Installations
-If you've previously installed Hemi-Miner, stop any running instances first to avoid conflicts.
+If you have any old versions of Hemi-Miner running, stop them first to avoid conflicts.
 
-List existing screens to check for active Hemi screens:
+List existing screens to check for any active Hemi screens:
 
 bash
 Copy code
 screen -ls
-Close any active Hemi screen (if present):
+Close the active Hemi screen (if any):
 
 bash
 Copy code
 screen -XS hemi quit
-Backup your old wallet file (if you have one):
+Backup your old wallet file (just in case):
 
 bash
 Copy code
@@ -39,7 +36,7 @@ Create a new directory for Hemi:
 bash
 Copy code
 mkdir hemi
-Extract the downloaded file into the hemi directory:
+Extract the file into the hemi directory:
 
 bash
 Copy code
@@ -50,20 +47,20 @@ bash
 Copy code
 cd hemi
 🔑 Step 4: Generate a New Wallet
-If you don’t have a wallet yet or are setting up Hemi-Miner for the first time, you’ll need to create one.
+If you don’t have a wallet yet or this is your first time setting up Hemi-Miner, you’ll need a new one.
 
 Generate a new wallet:
 
 bash
 Copy code
 ./keygen -secp256k1 -json -net="testnet" > ~/popm-address.json
-View your wallet address to confirm it was created successfully:
+View your wallet address to confirm it was created:
 
 bash
 Copy code
 cat ~/popm-address.json
 🌐 Step 5: Set Up Environment Variables
-Replace yourpk with your private key and set up the required environment variables:
+Set up the required environment variables. Replace yourpk with your private key.
 
 bash
 Copy code
@@ -71,7 +68,7 @@ export POPM_BTC_PRIVKEY=yourpk
 export POPM_STATIC_FEE=400
 export POPM_BFG_URL=wss://testnet.rpc.hemi.network/v1/ws/public
 🖥️ Step 6: Run Hemi-Miner in a New Screen
-To keep Hemi-Miner running independently, start it in a new screen.
+Running Hemi-Miner in a screen allows it to run independently, even if you disconnect.
 
 Create a new screen for Hemi-Miner:
 
@@ -92,7 +89,7 @@ bash
 Copy code
 screen -r Hemi-Miner
 🔄 Step 7: Install and Run the Fee Updater (Optional but Recommended)
-Running the fee updater keeps mining fees up-to-date. This step is optional but can help improve mining efficiency.
+Keeping fees updated is essential for effective mining. Run the following commands in a separate screen.
 
 Create a new screen for the fee updater:
 
@@ -108,7 +105,7 @@ Detach from the screen:
 
 Press Ctrl + A, then D.
 📊 Step 8: Verify Miner Status
-To ensure that everything is running as expected, check the miner's status.
+To make sure everything is running smoothly, check the miner's status.
 
 View miner logs:
 
@@ -117,5 +114,5 @@ Copy code
 sudo journalctl -u hemi.service -f -n 50
 Exit the log view by pressing Ctrl + C.
 
-📌 Note
-Always back up sensitive files like popm-address.json. Follow the instructions carefully, and happy mining! 💪
+📌 Note:
+Always back up sensitive files like popm-address.json. Happy mining! 💪
